@@ -1584,8 +1584,18 @@
         video.hidden = false;
         function tryPlay(){ video.play().catch(function(){}); }
         if (source){
-          source.src = source.getAttribute('data-src');
+          var dataUri = source.getAttribute('data-src');
           source.removeAttribute('data-src');
+          try {
+            var comma = dataUri.indexOf(',');
+            var mime = dataUri.slice(5, comma).split(';')[0];
+            var binary = atob(dataUri.slice(comma + 1));
+            var bytes = new Uint8Array(binary.length);
+            for (var i = 0; i < binary.length; i++){ bytes[i] = binary.charCodeAt(i); }
+            source.src = URL.createObjectURL(new Blob([bytes], {type: mime}));
+          } catch (e){
+            source.src = dataUri;
+          }
           video.addEventListener('canplay', tryPlay, {once:true});
           video.load();
         } else {
