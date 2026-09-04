@@ -1580,10 +1580,17 @@
         var wrap = btn.closest('.lv-wrap');
         var video = wrap.querySelector('[data-video-player]');
         var source = video.querySelector('source[data-src]');
-        if (source){ source.src = source.getAttribute('data-src'); source.removeAttribute('data-src'); video.load(); }
         btn.hidden = true;
         video.hidden = false;
-        video.play().catch(function(){});
+        function tryPlay(){ video.play().catch(function(){}); }
+        if (source){
+          source.src = source.getAttribute('data-src');
+          source.removeAttribute('data-src');
+          video.addEventListener('canplay', tryPlay, {once:true});
+          video.load();
+        } else {
+          tryPlay();
+        }
       });
     });
 
