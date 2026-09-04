@@ -179,7 +179,7 @@
   #abertura .wrap{position:relative;z-index:2;width:100%}
 
   .hero-grid{display:grid;gap:var(--s7)}
-  @media (min-width:900px){.hero-grid{grid-template-columns:1.05fr .95fr;align-items:center;gap:var(--s8)}}
+  @media (min-width:900px){.hero-grid{grid-template-columns:1.05fr minmax(0,440px);align-items:center;gap:var(--s8)}}
 
   .hero-headline{display:block}
   .hero-headline .w{display:inline-block;opacity:0}
@@ -210,7 +210,7 @@
   .reserva .glyph::after{content:"";position:absolute;inset:9px;border-radius:50%;border:1px solid var(--linha);border-top-color:var(--dourado)}
   .hero-reserva{aspect-ratio:3/4;min-height:0}
   @media (max-width:899px){.hero-reserva{aspect-ratio:4/5;max-height:60vh}}
-  @media (min-width:900px){.hero-reserva{max-height:min(76vh,640px);width:auto;margin:0 auto}}
+  @media (min-width:900px){.hero-reserva{max-height:min(76vh,640px)}}
 
   /* moldura em setor — topo em arco, cantos inferiores em ângulo, como um setor da roleta */
   .hero-reserva{
