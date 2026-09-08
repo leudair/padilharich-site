@@ -380,8 +380,12 @@
   .gallery-toggle{margin-top:var(--s6)}
 
   /* ================= depoimento em vídeo — bloco avulso, mesmo padrão do vídeo do Sobre ================= */
-  .depoimento-video-wrap{margin-top:var(--s8);max-width:300px;margin-left:auto;margin-right:auto;text-align:center}
-  .depoimento-video-label{font-family:var(--f-body);font-weight:600;font-size:.85rem;color:var(--cinza-fraco);margin:0 0 var(--s3)}
+  .depoimento-video-wrap{margin-top:var(--s6);max-width:300px;margin-left:auto;margin-right:auto;text-align:center}
+  .depoimento-video-label{
+    font-family:var(--f-body);font-weight:700;font-size:.88rem;letter-spacing:.03em;
+    color:var(--dourado);margin:0 0 var(--s4);display:flex;align-items:center;justify-content:center;gap:var(--s3)
+  }
+  .depoimento-video-label::before,.depoimento-video-label::after{content:"";width:22px;height:1px;background:var(--dourado)}
   .depoimento-video-wrap video{display:block;width:100%;height:auto;border-radius:8px;border:1px solid var(--linha);background:#000}
 
   .lightbox{
