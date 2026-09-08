@@ -345,7 +345,7 @@
   }
   .gallery-item:hover{border-color:var(--linha)}
   .gallery-item img{display:block;width:100%;height:auto}
-  .gallery-item-video{cursor:default;background:#000}
+  .gallery-item-video{cursor:default;background:#000;display:flex;align-items:center;justify-content:center}
   .gallery-item-video video{display:block;width:100%;height:auto}
   .gallery-arrow{
     display:flex;position:absolute;top:50%;transform:translateY(-50%);z-index:3;
@@ -1519,7 +1519,8 @@
         var w = gallery.clientWidth;
         var iw = parseFloat(img.getAttribute('width')) || img.naturalWidth || w;
         var ih = parseFloat(img.getAttribute('height')) || img.naturalHeight || w;
-        return Math.round(w * (ih / iw));
+        var extra = item.classList.contains('gallery-item-video') ? 48 : 0;
+        return Math.round(w * (ih / iw)) + extra;
       }
       function updateDots(i){
         var vis = visibleList();
